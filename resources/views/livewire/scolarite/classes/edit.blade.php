@@ -4,6 +4,7 @@
         wire:model="section_id"
         label="Section"
         required>
+
         @foreach ($sections as $section )
             <option value="{{ $section->id }}">{{ $section->nom }}</option>
         @endforeach
