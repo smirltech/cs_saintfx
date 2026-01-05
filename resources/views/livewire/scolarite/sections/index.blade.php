@@ -22,7 +22,7 @@
             <div class="card-tools d-flex my-auto">
                 @can('sections.create')
                     <button type="button"
-                            class="btn btn-primary  ml-2" data-toggle="modal"
+                            class="btn  ml-2" style="background-color: #0c84ff; color: white" data-toggle="modal"
                             data-target="#add-section-modal"><span
                             class="fa fa-plus"></span></button>
                 @endcan

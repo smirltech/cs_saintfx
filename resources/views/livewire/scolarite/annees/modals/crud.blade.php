@@ -25,7 +25,7 @@
     </form>
     <x-slot name="footerSlot">
         <div class="d-flex">
-            <button form="f1a" type="submit" class="btn btn-outline-primary mr-3">Soumettre</button>
+            <button form="f1a" type="submit" class="btn mr-3" style="background-color: #0c84ff; color: white">Soumettre</button>
         </div>
     </x-slot>
 </x-adminlte-modal>

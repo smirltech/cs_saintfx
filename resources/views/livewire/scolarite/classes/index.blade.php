@@ -31,7 +31,7 @@
                             <div class="card-tools d-flex my-auto">
                                 @can('classes.create')
                                     <button onclick="showModal('scolarite.classe.classe-edit-component')" title="ajouter"
-                                       class="btn btn-primary mr-2"><span
+                                       class="btn mr-2" style="background-color: #0c84ff; color: white"><span
                                                 class="fa fa-plus"></span></button>
                                 @endcan
                             </div>

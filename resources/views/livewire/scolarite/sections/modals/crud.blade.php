@@ -33,10 +33,10 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button wire:click="$emit('onModalClosed')" type="button" class="btn btn-default" data-dismiss="modal">
+                <button wire:click="$emit('onModalClosed')" type="button" class="btn " style="background-color: #000; color: white" data-dismiss="modal">
                     Fermer
                 </button>
-                <button form="f1" type="submit" class="btn btn-primary">Ajouter</button>
+                <button form="f1" type="submit" class="btn" style="background-color: #0c84ff; color: white ">Ajouter</button>
             </div>
         </div>
 

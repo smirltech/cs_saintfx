@@ -156,10 +156,10 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button wire:click="$emit('onModalClosed')" type="button" class="btn btn-default" data-dismiss="modal">
+                <button wire:click="$emit('onModalClosed')" type="button" class="btn" style="background-color: #000 ; color: white" data-dismiss="modal">
                     Fermer
                 </button>
-                <button form="f1" type="submit" class="btn btn-primary">Ajouter</button>
+                <button form="f1" type="submit" class="btn " style="color: white; background-color: #0c84ff">Ajouter</button>
             </div>
         </div>
 
@@ -208,10 +208,10 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button wire:click="$emit('onModalClosed')" type="button" class="btn btn-default" data-dismiss="modal">
+                <button wire:click="$emit('onModalClosed')" type="button" class="btn " style="background-color: #000 ; color: white" data-dismiss="modal">
                     Fermer
                 </button>
-                <button form="f2" type="updateOption" class="btn btn-primary">Modifier</button>
+                <button form="f2" type="updateOption" class="btn " style="background-color: #0c84ff; color: white">Modifier</button>
             </div>
         </div>
 
@@ -234,10 +234,10 @@
                 <p>Êtes-vous sûr de vouloir supprimer cette option ?</p>
             </div>
             <div class="modal-footer justify-content-between">
-                <button wire:click="$emit('onModalClosed')" type="button" class="btn btn-default" data-dismiss="modal">
+                <button wire:click="$emit('onModalClosed')" type="button" class="btn " style="background-color: #000 ; color: white" data-dismiss="modal">
                     Fermer
                 </button>
-                <button wire:click="deleteOption" class="btn btn-primary">Supprimer</button>
+                <button wire:click="deleteOption" class="btn" style="background-color: #0c84ff; color: white">Supprimer</button>
             </div>
         </div>
 

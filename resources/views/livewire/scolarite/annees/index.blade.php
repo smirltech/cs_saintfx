@@ -34,7 +34,8 @@
                             </div>
                             <div class="card-tools d-flex my-auto">
                                 @can('annees.create')
-                                    <button type="button" class="btn btn-primary btn-sm"
+                                    <button type="button" class="btn"
+                                            style="background-color: #0c84ff; color: #ffffff;"
                                             data-toggle="modal"
                                             data-target="#add-annee-modal">
                                     <span
