@@ -29,6 +29,16 @@
         @endforeach
     </x-form::select>
 
+    @if($section_id == 1 || $section_id == 2)
+        <x-form::select label="Type" refresh wire:model="type">
+            @foreach (range('A', 'G') as $t)
+                <option value="{{ $t }}">{{ $t }}</option>
+            @endforeach
+        </x-form::select>
+    @endif
+
+
+
     <x-form::input
         required
         type="text"

@@ -31,6 +31,7 @@ class ClasseEditComponent extends BaseComponent
     public ?string $enseignant_id=null;
     public ?string $section_id = null;
     public ?string $option_id = null;
+    public ?string $type = null;
 
 
     public function mount(Classe $classe): void
@@ -97,7 +98,10 @@ class ClasseEditComponent extends BaseComponent
     public function setCode(): void
     {
         $optionSection = Option::find($this->option_id) ?? Section::find($this->section_id);
-        $this->classe->code = "{$this->classe->niveau?->value}{$optionSection->code}";
+//        $this->classe->code = "{$this->classe->niveau?->value}{$optionSection->code}{$this->type ?? ''}";
+        $this->classe->code = $this->classe->niveau?->value
+            . ($optionSection?->code ?? '')
+            . ($this->type ?? '');
     }
 
     public function updatedOptionId(): void
@@ -105,6 +109,12 @@ class ClasseEditComponent extends BaseComponent
     {
         $this->setCode();
     }
+
+    public function updatedType(): void
+    {
+        $this->setCode();
+    }
+
 
     protected function rules(): array
     {
@@ -114,6 +124,9 @@ class ClasseEditComponent extends BaseComponent
             'section_id' => 'required',
             'option_id' => 'nullable',
             'enseignant_id' => 'nullable',
+            'type' => [
+                Rule::in(['A', 'B', 'C', 'D', 'E', 'F', 'G']),
+            ],
         ];
     }
 

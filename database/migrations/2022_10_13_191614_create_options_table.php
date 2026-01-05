@@ -12,6 +12,10 @@ return new class extends Migration {
             $table->id();
             $table->string('nom');
             $table->string('code')->nullable();
+            $table->string('type')->nullable();
+            $table->unsignedBigInteger('section_id')->nullable();
+            $table->foreign('section_id')->references('id')->on('sections');
+
             $table->timestamps();
         });
     }

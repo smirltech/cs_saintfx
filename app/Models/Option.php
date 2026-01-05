@@ -13,6 +13,12 @@ class Option extends Model
 
     public $guarded = [];
 
+    public $fillable = [
+        'code',
+        'nom',
+        'section_id',
+    ];
+
     public function classes(): HasMany
     {
         return $this->hasMany(Classe::class);
