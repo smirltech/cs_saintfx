@@ -65,14 +65,14 @@
                                                         <span class="fa fa-pen"></span>
                                                     </button>
                                                 @endcan
-                                                @can('options.delete', $option)
-                                                    <button wire:click="getSelectedOption({{$option}})" type="button"
-                                                            title="supprimer" class="btn btn-danger  ml-2"
-                                                            data-toggle="modal"
-                                                            data-target="#delete-option-modal">
-                                                        <span class="fa fa-trash"></span>
-                                                    </button>
-                                                @endcan
+{{--                                                @can('options.delete', $option)--}}
+{{--                                                    <button wire:click="getSelectedOption({{$option}})" type="button"--}}
+{{--                                                            title="supprimer" class="btn btn-danger  ml-2"--}}
+{{--                                                            data-toggle="modal"--}}
+{{--                                                            data-target="#delete-option-modal">--}}
+{{--                                                        <span class="fa fa-trash"></span>--}}
+{{--                                                    </button>--}}
+{{--                                                @endcan--}}
 
                                             </div>
                                         </td>
