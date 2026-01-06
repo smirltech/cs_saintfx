@@ -16,6 +16,7 @@ use App\View\Components\AdminLayout;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rule;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class ClasseEditComponent extends BaseComponent
 {
@@ -125,6 +126,7 @@ class ClasseEditComponent extends BaseComponent
             'option_id' => 'nullable',
             'enseignant_id' => 'nullable',
             'type' => [
+                'nullable',
                 Rule::in(['A', 'B', 'C', 'D', 'E', 'F', 'G']),
             ],
         ];
