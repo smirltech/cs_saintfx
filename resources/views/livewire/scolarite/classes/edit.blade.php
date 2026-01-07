@@ -30,7 +30,7 @@
         @endforeach
     </x-form::select>
 
-    @if($section_id == 1 || $section_id == 2)
+    @if($section_id == 1 || $section_id == 2 || $section_id == 3 )
         <x-form::select label="Type" refresh wire:model="type">
             @foreach (range('A', 'G') as $t)
                 <option value="{{ $t }}">{{ $t }}</option>
