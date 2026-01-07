@@ -97,8 +97,11 @@
 {{--</div>--}}
 
 @php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
-
-<div id="factPrint">
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Reçu</title>
 
     <style>
         @media print {
@@ -106,44 +109,55 @@
                 margin: 0;
                 padding: 0;
             }
+        }
 
-            #factPrint {
-                width: 80mm;
-                font-family: monospace;
-                font-size: 11px;
-                line-height: 1.3;
-                color: #000;
-            }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: #fff;
+        }
 
-            img {
-                max-width: 60px;
-                margin-bottom: 4px;
-            }
+        #factPrint {
+            width: 80mm;
+            font-family: monospace;
+            font-size: 11px;
+            line-height: 1.3;
+            color: #000;
+        }
 
-            .center { text-align: center; }
-            .right { text-align: right; }
-            .bold { font-weight: bold; }
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .bold { font-weight: bold; }
 
-            .separator {
-                border-top: 1px dashed #000;
-                margin: 6px 0;
-            }
+        img {
+            max-width: 60px;
+            margin-bottom: 4px;
+        }
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
+        .separator {
+            border-top: 1px dashed #000;
+            margin: 6px 0;
+        }
 
-            th, td {
-                padding: 2px 0;
-                font-size: 11px;
-            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-            th {
-                border-bottom: 1px solid #000;
-            }
+        th, td {
+            padding: 2px 0;
+            font-size: 11px;
+        }
+
+        th {
+            border-bottom: 1px solid #000;
         }
     </style>
+</head>
+<body>
+
+<div id="factPrint">
 
     <div class="center">
         <img src="{{ url('/images/csfx/img.png') }}">
@@ -196,20 +210,23 @@
     <div class="separator"></div>
 
     <div class="right">
-        Cash : <span class="bold">
+        Cash :
+        <span class="bold">
             {{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}
         </span>
     </div>
 
     <div class="right">
-        Reste : <span class="bold">
+        Reste :
+        <span class="bold">
             {{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}
         </span>
     </div>
 
     @if($perception?->paid_by)
         <div class="right">
-            Payé par : <span class="bold">{{ $perception->paid_by }}</span>
+            Payé par :
+            <span class="bold">{{ $perception->paid_by }}</span>
         </div>
     @endif
 
@@ -222,22 +239,18 @@
 
 </div>
 
-<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 <script>
-    printJS({
-        printable: 'factPrint',
-        type: 'html',
-        style: `
-            body { margin: 0; }
-            #factPrint { width: 80mm; font-family: monospace; }
-        `,
-        onPrintDialogClose: redirectBack
-    });
+    window.onload = function () {
+        window.print();
+    };
 
-    function redirectBack() {
-        location.replace("{{ URL::previous() }}");
-    }
+    window.onafterprint = function () {
+        window.location.href = "{{ URL::previous() }}";
+    };
 </script>
+
+</body>
+</html>
 
 
 
