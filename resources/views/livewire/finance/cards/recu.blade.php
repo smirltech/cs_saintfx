@@ -1,7 +1,7 @@
 @php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
 <div id="factPrint" class="text-center" style="text-align:center">
     <div style="text-align:center" class="text-center">
-        <img width="80px" src="{{url('/images/logo.png')}}" alt="cs francois xavier logo">
+        <img width="80px" src="{{url('/images/csfx/img.png')}}" alt="cs francois xavier logo">
     </div>
     <strong>College St Francois Xavier</strong>
     <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe Lubumbashi, RDC</div>
