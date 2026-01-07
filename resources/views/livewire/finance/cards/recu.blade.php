@@ -1,97 +1,256 @@
+{{--@php use App\Helpers\Helpers;use Carbon\Carbon; @endphp--}}
+{{--<div id="factPrint" class="text-center" style="text-align:center">--}}
+{{--    <div style="text-align:center" class="text-center">--}}
+{{--        <img width="80px" src="{{url('/images/csfx/img.png')}}" alt="cs francois xavier logo">--}}
+{{--    </div>--}}
+{{--    <strong>College St Francois Xavier</strong>--}}
+{{--    <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe Lubumbashi, RDC</div>--}}
+{{--    --}}{{--<div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>--}}
+{{--        <span  class="">Email:email</span>--}}
+{{--    </div>--}}
+
+{{--    <div style="text-align:center" class="text-center">REÇU N°{{$perception?->reference}}</div>--}}
+{{--    <div style="text-align:center" class="text-center">--}}
+{{--        Date: {{Carbon::now()->format("d-m-Y à H:i:s")}}--}}
+{{--    </div>--}}
+{{--    <br>--}}
+{{--    <div style="text-align:center" class="text-center">Élève :--}}
+{{--        <strong>{{$inscription?->eleve->fullName}}</strong></div>--}}
+{{--    <br>--}}
+{{--    <div style="text-align:center; width: 100%">--}}
+{{--                            <span style="text-align:left; margin-right: 10px"--}}
+{{--                                  class="">{{$inscription?->classe?->niveau?->label()}} </span>--}}
+{{--        <span style="text-align:center; margin-right: 10px"--}}
+{{--              class=""> {{$inscription?->classe->parent->nom}} </span>--}}
+{{--        <span style="text-align:right" class=""> {{$annee->nom}}</span>--}}
+
+{{--    </div>--}}
+{{--    <br>--}}
+{{--    <div class="d-flex  justify-content-evenly">--}}
+{{--        <strong class="">{{$perception->frais->nom}}</strong>--}}
+{{--    </div>--}}
+{{--    <br>--}}
+{{--    <div class="table-responsive">--}}
+{{--        <table style="width:100%" class="table">--}}
+{{--            <thead>--}}
+{{--            <tr>--}}
+{{--                <th>MONTANT DU</th>--}}
+{{--                <th>MONTANT PAYE</th>--}}
+{{--            </tr>--}}
+{{--            </thead>--}}
+{{--            <tbody>--}}
+{{--            <tr class="text-dark">--}}
+{{--            <tr>--}}
+{{--                <td>--}}
+{{--                    {{number_format($perception->frais_montant)}} {{ $perception->frais->devise }}--}}
+{{--                </td>--}}
+{{--                <td>--}}
+{{--                    {{number_format($perception->montant)}} {{ $perception->frais->devise }}--}}
+{{--                </td>--}}
+{{--                <td>--}}
+{{--            </tr>--}}
+{{--            </tbody>--}}
+{{--        </table>--}}
+{{--    </div>--}}
+{{--    <hr>--}}
+{{--    --}}{{--<div class="text-right">Total :--}}
+{{--        <strong>{{Helpers::currencyFormat($montant)}}</strong></div>--}}
+{{--    <div style="text-align:right" class="text-right">Cash :--}}
+{{--        <strong>{{Helpers::currencyFormat($perception?->montant)}} {{ $perception->frais->devise }}</strong></div>--}}
+{{--    <div style="text-align:right" class="text-right">Reste :--}}
+{{--        <strong>{{Helpers::currencyFormat($perception?->reste)}}--}}
+{{--            {{ $perception->frais->devise }} </strong>--}}
+{{--    </div>--}}
+{{--    @if($perception?->paid_by != null)--}}
+{{--        <div style="text-align:right" class="text-right">Payé par :--}}
+{{--            <strong>{{$perception?->paid_by}}</strong></div>--}}
+{{--    @endif--}}
+{{--    <br>--}}
+{{--    <div style="text-align:center; margin-bottom: 50px" class="text-center">--}}
+{{--        <span class="w3-center justify-content-center w3-small">Si les prémices sont Saintes, la masse l’est aussi;--}}
+{{--            Si la racine est sainte, les branches le sont aussi</span>--}}
+{{--    </div>--}}
+
+{{--    <div class="w3-small text-center">College St Francois Xavier - FINANCE</div>--}}
+{{--    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>--}}
+{{--    <script>--}}
+
+{{--        printJS({--}}
+{{--            printable: 'factPrint',--}}
+{{--            type: 'html',--}}
+{{--            targetStyles: ['*'],--}}
+{{--            maxWidth: 300,--}}
+{{--            style: "text-align:center",--}}
+{{--            onPrintDialogClose: redirectBack--}}
+{{--        });--}}
+
+
+{{--        window.onafterprint = function () {--}}
+{{--            redirectBack();--}}
+{{--        }--}}
+
+{{--        function redirectBack() {--}}
+{{--            location.replace("{{URL::previous()}}");--}}
+{{--        }--}}
+
+{{--    </script>--}}
+{{--</div>--}}
+
 @php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
-<div id="factPrint" class="text-center" style="text-align:center">
-    <div style="text-align:center" class="text-center">
-        <img width="80px" src="{{url('/images/csfx/img.png')}}" alt="cs francois xavier logo">
-    </div>
-    <strong>College St Francois Xavier</strong>
-    <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe Lubumbashi, RDC</div>
-    <div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
-        <span  class="">Email:email</span>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Reçu</title>
+
+    <style>
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: #fff;
+        }
+
+        #factPrint {
+            width: 80mm;
+            font-family: monospace;
+            font-size: 11px;
+            line-height: 1.3;
+            color: #000;
+        }
+
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .bold { font-weight: bold; }
+
+        img {
+            max-width: 60px;
+            margin-bottom: 4px;
+        }
+
+        .separator {
+            border-top: 1px dashed #000;
+            margin: 6px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 2px 0;
+            font-size: 11px;
+        }
+
+        th {
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="factPrint">
+
+    <div class="center">
+        <img src="{{ url('/images/csfx/img.png') }}">
+        <div class="bold">COLLÈGE ST FRANÇOIS XAVIER</div>
+        <div>AV. Kilenge coin Wamba</div>
+        <div>Q/Bel-Air C/Kampembe</div>
+        <div>Lubumbashi – RDC</div>
     </div>
 
-    <div style="text-align:center" class="text-center">REÇU N°{{$perception?->reference}}</div>
-    <div style="text-align:center" class="text-center">
-        Date: {{Carbon::now()->format("d-m-Y à H:i:s")}}
-    </div>
-    <br>
-    <div style="text-align:center" class="text-center">Élève :
-        <strong>{{$inscription?->eleve->fullName}}</strong></div>
-    <br>
-    <div style="text-align:center; width: 100%">
-                            <span style="text-align:left; margin-right: 10px"
-                                  class="">{{$inscription?->classe?->niveau?->label()}} </span>
-        <span style="text-align:center; margin-right: 10px"
-              class=""> {{$inscription?->classe->parent->nom}} </span>
-        <span style="text-align:right" class=""> {{$annee->nom}}</span>
+    <div class="separator"></div>
 
+    <div class="center bold">
+        REÇU N° {{ $perception?->reference }}
     </div>
-    <br>
-    <div class="d-flex  justify-content-evenly">
-        <strong class="">{{$perception->frais->nom}}</strong>
+
+    <div class="center">
+        {{ Carbon::now()->format('d/m/Y H:i') }}
     </div>
-    <br>
-    <div class="table-responsive">
-        <table style="width:100%" class="table">
-            <thead>
-            <tr>
-                <th>MONTANT DU</th>
-                <th>MONTANT PAYE</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="text-dark">
-            <tr>
-                <td>
-                    {{number_format($perception->frais_montant)}} {{ $perception->frais->devise }}
-                </td>
-                <td>
-                    {{number_format($perception->montant)}} {{ $perception->frais->devise }}
-                </td>
-                <td>
-            </tr>
-            </tbody>
-        </table>
+
+    <div class="separator"></div>
+
+    <div>
+        Élève :<br>
+        <span class="bold">{{ $inscription?->eleve->fullName }}</span>
     </div>
-    <hr>
-    <div class="text-right">Total :
-        <strong>{{Helpers::currencyFormat($montant)}}</strong></div>
-    <div style="text-align:right" class="text-right">Cash :
-        <strong>{{Helpers::currencyFormat($perception?->montant)}} {{ $perception->frais->devise }}</strong></div>
-    <div style="text-align:right" class="text-right">Reste :
-        <strong>{{Helpers::currencyFormat($perception?->reste)}}
-            {{ $perception->frais->devise }} </strong>
+
+    <div>
+        {{ $inscription?->classe?->niveau?->label() }} –
+        {{ $inscription?->classe->parent->nom }}<br>
+        Année : {{ $annee->nom }}
     </div>
-    @if($perception?->paid_by != null)
-        <div style="text-align:right" class="text-right">Payé par :
-            <strong>{{$perception?->paid_by}}</strong></div>
+
+    <div class="separator"></div>
+
+    <div class="center bold">
+        {{ $perception->frais->nom }}
+    </div>
+
+    <table>
+        <tr>
+            <th>Montant dû</th>
+            <th class="right">Payé</th>
+        </tr>
+        <tr>
+            <td>{{ number_format($perception->frais_montant) }} {{ $perception->frais->devise }}</td>
+            <td class="right">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
+        </tr>
+    </table>
+
+    <div class="separator"></div>
+
+    <div class="right">
+        Cash :
+        <span class="bold">
+            {{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}
+        </span>
+    </div>
+
+    <div class="right">
+        Reste :
+        <span class="bold">
+            {{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}
+        </span>
+    </div>
+
+    @if($perception?->paid_by)
+        <div class="right">
+            Payé par :
+            <span class="bold">{{ $perception->paid_by }}</span>
+        </div>
     @endif
-    <br>
-    <div style="text-align:center; margin-bottom: 50px" class="text-center">
-        <span class="w3-center justify-content-center w3-small">Si les prémices sont Saintes, la masse l’est aussi;
-            Si la racine est sainte, les branches le sont aussi</span>
+
+    <div class="separator"></div>
+
+    <div class="center" style="font-size:10px">
+        College St Francois Xavier<br>
+        Département Finance
     </div>
 
-    <div class="w3-small text-center">College St Francois Xavier - FINANCE</div>
-    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-    <script>
-
-        printJS({
-            printable: 'factPrint',
-            type: 'html',
-            targetStyles: ['*'],
-            maxWidth: 300,
-            style: "text-align:center",
-            onPrintDialogClose: redirectBack
-        });
-
-
-        window.onafterprint = function () {
-            redirectBack();
-        }
-
-        function redirectBack() {
-            location.replace("{{URL::previous()}}");
-        }
-
-    </script>
 </div>
+
+<script>
+    window.onload = function () {
+        window.print();
+    };
+
+    window.onafterprint = function () {
+        window.location.href = "{{ URL::previous() }}";
+    };
+</script>
+
+</body>
+</html>
+
+
+
