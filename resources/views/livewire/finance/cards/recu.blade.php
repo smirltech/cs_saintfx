@@ -98,72 +98,56 @@
 
 @php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
 
-<style>
-    /* Format ticket 80mm */
-    #factPrint {
-        width: 80mm;
-        margin: auto;
-        font-family: Arial, sans-serif;
-        font-size: 11px;
-        color: #000;
-    }
-
-    #factPrint img {
-        max-width: 60px;
-        margin-bottom: 5px;
-    }
-
-    #factPrint strong {
-        font-size: 12px;
-    }
-
-    #factPrint .title {
-        font-weight: bold;
-        font-size: 13px;
-    }
-
-    #factPrint .separator {
-        border-top: 1px dashed #000;
-        margin: 6px 0;
-    }
-
-    #factPrint table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 11px;
-    }
-
-    #factPrint table th,
-    #factPrint table td {
-        padding: 3px 0;
-        text-align: left;
-    }
-
-    #factPrint table th {
-        border-bottom: 1px solid #000;
-        font-weight: bold;
-    }
-
-    .text-right {
-        text-align: right;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    @media print {
-        body {
-            margin: 0;
-        }
-    }
-</style>
-
 <div id="factPrint">
 
-    <div class="text-center">
-        <img src="{{ url('/images/csfx/img.png') }}" alt="logo">
-        <div class="title">COLLÈGE ST FRANÇOIS XAVIER</div>
+    <style>
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #factPrint {
+                width: 80mm;
+                font-family: monospace;
+                font-size: 11px;
+                line-height: 1.3;
+                color: #000;
+            }
+
+            img {
+                max-width: 60px;
+                margin-bottom: 4px;
+            }
+
+            .center { text-align: center; }
+            .right { text-align: right; }
+            .bold { font-weight: bold; }
+
+            .separator {
+                border-top: 1px dashed #000;
+                margin: 6px 0;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 2px 0;
+                font-size: 11px;
+            }
+
+            th {
+                border-bottom: 1px solid #000;
+            }
+        }
+    </style>
+
+    <div class="center">
+        <img src="{{ url('/images/csfx/img.png') }}">
+        <div class="bold">COLLÈGE ST FRANÇOIS XAVIER</div>
         <div>AV. Kilenge coin Wamba</div>
         <div>Q/Bel-Air C/Kampembe</div>
         <div>Lubumbashi – RDC</div>
@@ -171,8 +155,11 @@
 
     <div class="separator"></div>
 
-    <div class="text-center">
-        <strong>REÇU N° {{ $perception?->reference }}</strong><br>
+    <div class="center bold">
+        REÇU N° {{ $perception?->reference }}
+    </div>
+
+    <div class="center">
         {{ Carbon::now()->format('d/m/Y H:i') }}
     </div>
 
@@ -180,7 +167,7 @@
 
     <div>
         Élève :<br>
-        <strong>{{ $inscription?->eleve->fullName }}</strong>
+        <span class="bold">{{ $inscription?->eleve->fullName }}</span>
     </div>
 
     <div>
@@ -191,44 +178,44 @@
 
     <div class="separator"></div>
 
-    <div class="text-center">
-        <strong>{{ $perception->frais->nom }}</strong>
+    <div class="center bold">
+        {{ $perception->frais->nom }}
     </div>
 
     <table>
-        <thead>
         <tr>
             <th>Montant dû</th>
-            <th class="text-right">Payé</th>
+            <th class="right">Payé</th>
         </tr>
-        </thead>
-        <tbody>
         <tr>
             <td>{{ number_format($perception->frais_montant) }} {{ $perception->frais->devise }}</td>
-            <td class="text-right">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
+            <td class="right">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
         </tr>
-        </tbody>
     </table>
 
     <div class="separator"></div>
 
-    <div class="text-right">
-        Cash : <strong>{{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}</strong>
+    <div class="right">
+        Cash : <span class="bold">
+            {{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}
+        </span>
     </div>
 
-    <div class="text-right">
-        Reste : <strong>{{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}</strong>
+    <div class="right">
+        Reste : <span class="bold">
+            {{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}
+        </span>
     </div>
 
     @if($perception?->paid_by)
-        <div class="text-right">
-            Payé par : <strong>{{ $perception->paid_by }}</strong>
+        <div class="right">
+            Payé par : <span class="bold">{{ $perception->paid_by }}</span>
         </div>
     @endif
 
     <div class="separator"></div>
 
-    <div class="text-center" style="font-size:10px">
+    <div class="center" style="font-size:10px">
         College St Francois Xavier<br>
         Département Finance
     </div>
@@ -240,8 +227,10 @@
     printJS({
         printable: 'factPrint',
         type: 'html',
-        targetStyles: ['*'],
-        maxWidth: 300,
+        style: `
+            body { margin: 0; }
+            #factPrint { width: 80mm; font-family: monospace; }
+        `,
         onPrintDialogClose: redirectBack
     });
 
