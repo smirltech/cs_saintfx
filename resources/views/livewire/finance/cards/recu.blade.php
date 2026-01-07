@@ -107,7 +107,7 @@
     <style>
         @media print {
             @page {
-                size: 80mm auto;
+                size: auto;
                 margin: 0;
             }
 
@@ -118,13 +118,15 @@
         }
 
         body {
-            width: 80mm;
-            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;   /* centre horizontalement */
+            align-items: flex-start;   /* commence en haut (meilleur pour ticket) */
+            background: #fff;
             font-family: monospace;
             font-size: 11px;
             line-height: 1.3;
             color: #000;
-            background: #fff;
         }
 
         #factPrint {
@@ -246,7 +248,7 @@
 
     <div class="line"></div>
 
-    <!-- PIED DE PAGE (SANS COPYRIGHT) -->
+    <!-- PIED DE PAGE -->
     <div class="center footer">
         COLLÈGE ST FRANÇOIS XAVIER<br>
         SERVICE FINANCE
