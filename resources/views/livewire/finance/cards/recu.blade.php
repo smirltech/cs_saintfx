@@ -107,7 +107,7 @@
     <style>
         @media print {
             @page {
-                size: auto;
+                size: auto;        /* hauteur auto selon contenu */
                 margin: 0;
             }
 
@@ -118,20 +118,22 @@
         }
 
         body {
-            min-height: 100vh;
+            width: 100%;
             display: flex;
             justify-content: center;   /* centre horizontalement */
-            align-items: flex-start;   /* commence en haut (meilleur pour ticket) */
             background: #fff;
             font-family: monospace;
-            font-size: 11px;
-            line-height: 1.3;
+            font-size: 13px;           /* un peu plus grand */
+            line-height: 1.4;
             color: #000;
+            padding: 5mm 0;            /* petit padding haut/bas */
         }
 
         #factPrint {
-            width: 80mm;
+            width: 80mm;              /* largeur fixe */
             padding: 3mm;
+            background: #fff;
+            /* hauteur automatique selon contenu */
         }
 
         .center { text-align: center; }
@@ -139,8 +141,8 @@
         .bold { font-weight: bold; }
 
         img {
-            max-width: 55px;
-            margin-bottom: 4px;
+            max-width: 60px;
+            margin-bottom: 6px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -158,7 +160,7 @@
 
         th, td {
             padding: 2px 0;
-            font-size: 11px;
+            font-size: 13px;
         }
 
         th {
@@ -167,7 +169,7 @@
         }
 
         .footer {
-            font-size: 9px;
+            font-size: 10px;
             margin-top: 8px;
         }
     </style>
@@ -242,7 +244,7 @@
     @if($perception?->paid_by)
         <div class="right">
             Payé par :
-            <span class="bold">{{ $perception->paid_by  }}</span>
+            <span class="bold">{{ $perception->paid_by }}</span>
         </div>
     @endif
 
@@ -268,6 +270,8 @@
 
 </body>
 </html>
+
+
 
 
 
