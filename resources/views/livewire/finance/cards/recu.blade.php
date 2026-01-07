@@ -107,7 +107,7 @@
     <style>
         @media print {
             @page {
-                size: auto;        /* hauteur auto selon contenu */
+                size: auto; /* hauteur auto selon contenu */
                 margin: 0;
             }
 
@@ -130,7 +130,7 @@
         }
 
         #factPrint {
-            width: 80mm;              /* largeur fixe */
+            width: 80mm;               /* largeur fixe */
             padding: 3mm;
             background: #fff;
             /* hauteur automatique selon contenu */
