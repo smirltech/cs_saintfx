@@ -102,313 +102,151 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reçu de paiement</title>
+    <title>Reçu</title>
+
     <style>
         @media print {
             @page {
                 size: 80mm auto;
                 margin: 0;
-                padding: 0;
             }
-            body * {
-                visibility: hidden;
-            }
-            #factPrint, #factPrint * {
-                visibility: visible;
-            }
-            #factPrint {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 76mm;
+            body {
                 margin: 0;
-                padding: 0;
             }
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            line-height: 1.2;
-            width: 76mm;
+            width: 80mm;
             margin: 0 auto;
-            padding: 2mm;
-            background: white;
-        }
-
-        .receipt {
-            width: 100%;
-            max-width: 76mm;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .bold {
-            font-weight: bold;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 3px;
-            display: block;
-        }
-
-        .institution {
-            font-size: 12px;
-            font-weight: bold;
-            margin: 2px 0;
-            text-transform: uppercase;
-        }
-
-        .address {
-            font-size: 9px;
-            margin: 1px 0;
-            line-height: 1.1;
-        }
-
-        .receipt-title {
+            font-family: monospace;
             font-size: 11px;
-            font-weight: bold;
-            margin: 5px 0;
+            line-height: 1.3;
+            color: #000;
+        }
+
+        #factPrint {
+            padding: 3mm;
+        }
+
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .bold { font-weight: bold; }
+
+        img {
+            max-width: 55px;
+            margin-bottom: 4px;
+        }
+
+        .line {
             border-top: 1px dashed #000;
-            border-bottom: 1px dashed #000;
-            padding: 3px 0;
+            margin: 6px 0;
         }
 
-        .receipt-number {
-            font-size: 10px;
-            margin: 3px 0;
-        }
-
-        .date {
-            font-size: 10px;
-            margin: 3px 0 5px 0;
-        }
-
-        .divider {
-            border-top: 1px dashed #000;
-            margin: 5px 0;
-        }
-
-        .section {
-            margin: 4px 0;
-            padding: 2px 0;
-        }
-
-        .student-name {
-            font-weight: bold;
-            font-size: 12px;
-            margin: 2px 0;
-        }
-
-        .student-details {
-            font-size: 10px;
-            margin: 2px 0;
-        }
-
-        .fee-name {
-            background: #f0f0f0;
-            padding: 3px;
-            margin: 4px 0;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 2px;
-        }
-
-        .table {
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin: 5px 0;
         }
 
-        .table th {
+        th, td {
+            padding: 2px 0;
+            font-size: 11px;
+        }
+
+        th {
             border-bottom: 1px solid #000;
-            padding: 3px 0;
-            font-weight: bold;
             text-align: left;
         }
 
-        .table td {
-            padding: 3px 0;
-        }
-
-        .table .amount {
-            text-align: right;
-            font-family: 'Courier New', monospace;
-        }
-
-        .totals {
-            margin-top: 8px;
-            padding-top: 5px;
-            border-top: 2px solid #000;
-        }
-
-        .total-line {
-            display: flex;
-            justify-content: space-between;
-            margin: 2px 0;
-        }
-
-        .amount-paid {
-            font-weight: bold;
-        }
-
-        .amount-due {
-            color: #d00;
-            font-weight: bold;
-        }
-
-        .paid-by {
-            background: #e8f5e9;
-            padding: 2px 4px;
-            border-radius: 2px;
-            margin: 3px 0;
-            font-size: 10px;
-        }
-
         .footer {
-            margin-top: 10px;
-            padding-top: 5px;
-            border-top: 1px dashed #000;
-            text-align: center;
             font-size: 9px;
-            color: #666;
-        }
-
-        .motto {
-            font-style: italic;
-            margin: 4px 0;
-            padding: 2px;
-            font-size: 9px;
-            line-height: 1.1;
-        }
-
-        .signature {
-            font-size: 9px;
-            margin-top: 5px;
-            padding-top: 5px;
-            border-top: 1px dashed #666;
-        }
-
-        .currency {
-            font-family: 'Courier New', monospace;
+            margin-top: 8px;
         }
     </style>
 </head>
+
 <body>
-<div id="factPrint" class="receipt">
-    <!-- En-tête -->
-    <div class="text-center">
-        <img src="{{ url('/images/csfx/img.png') }}" alt="Logo" class="logo">
-        <div class="institution">COLLÈGE ST FRANÇOIS XAVIER</div>
-        <div class="address">AV. Kilenge coin Wamba</div>
-        <div class="address">Q/Bel-Air C/Kampembe</div>
-        <div class="address">Lubumbashi – RDC</div>
+
+<div id="factPrint">
+
+    <div class="center">
+        <img src="{{ url('/images/csfx/img.png') }}">
+        <div class="bold">COLLÈGE ST FRANÇOIS XAVIER</div>
+        <div>AV. Kilenge coin Wamba</div>
+        <div>Q/Bel-Air C/Kampembe</div>
+        <div>Lubumbashi – RDC</div>
     </div>
 
-    <div class="divider"></div>
+    <div class="line"></div>
 
-    <!-- Titre du reçu -->
-    <div class="receipt-title text-center">REÇU DE PAIEMENT</div>
-    <div class="receipt-number text-center">N° {{ $perception?->reference }}</div>
-    <div class="date text-center">{{ Carbon::now()->format('d/m/Y H:i') }}</div>
+    <div class="center bold">REÇU N° {{ $perception?->reference }}</div>
+    <div class="center">{{ Carbon::now()->format('d/m/Y H:i') }}</div>
 
-    <div class="divider"></div>
+    <div class="line"></div>
 
-    <!-- Informations élève -->
-    <div class="section">
-        <div class="student-name">{{ $inscription?->eleve->fullName }}</div>
-        <div class="student-details">
-            {{ $inscription?->classe?->niveau?->label() }} – {{ $inscription?->classe->parent->nom }}<br>
-            Année scolaire: {{ $annee->nom }}
-        </div>
+    <div>
+        Élève :<br>
+        <span class="bold">{{ $inscription?->eleve->fullName }}</span>
     </div>
 
-    <div class="divider"></div>
+    <div>
+        {{ $inscription?->classe?->niveau?->label() }} –
+        {{ $inscription?->classe->parent->nom }}<br>
+        Année : {{ $annee->nom }}
+    </div>
 
-    <!-- Détails du frais -->
-    <div class="fee-name">{{ $perception->frais->nom }}</div>
+    <div class="line"></div>
 
-    <table class="table">
-        <thead>
+    <div class="center bold">{{ $perception->frais->nom }}</div>
+
+    <table>
         <tr>
-            <th>MONTANT DÛ</th>
-            <th class="amount">MONTANT PAYÉ</th>
+            <th>Montant dû</th>
+            <th class="right">Payé</th>
         </tr>
-        </thead>
-        <tbody>
         <tr>
             <td>{{ number_format($perception->frais_montant) }} {{ $perception->frais->devise }}</td>
-            <td class="amount">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
+            <td class="right">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
         </tr>
-        </tbody>
     </table>
 
-    <!-- Totaux -->
-    <div class="totals">
-        <div class="total-line">
-            <span>Total à payer:</span>
-            <span class="currency">{{ Helpers::currencyFormat($montant) }} {{ $perception->frais->devise }}</span>
-        </div>
-        <div class="total-line">
-            <span>Payé:</span>
-            <span class="currency amount-paid">{{ Helpers::currencyFormat($perception?->montant) }} {{ $perception->frais->devise }}</span>
-        </div>
-        <div class="total-line">
-            <span>Reste à payer:</span>
-            <span class="currency amount-due">{{ Helpers::currencyFormat($perception?->reste) }} {{ $perception->frais->devise }}</span>
-        </div>
+    <div class="line"></div>
 
-        @if($perception?->paid_by)
-            <div class="paid-by">
-                <strong>Payé par:</strong> {{ $perception->paid_by }}
-            </div>
-        @endif
+    <div class="right">
+        Cash :
+        <span class="bold">{{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}</span>
     </div>
 
-    <!-- Pied de page -->
-    <div class="footer">
-        <div class="motto">
-            "Si les prémices sont Saintes, la masse l'est aussi;<br>
-            Si la racine est sainte, les branches le sont aussi"
-        </div>
-        <div class="signature">
-            COLLÈGE ST FRANÇOIS XAVIER<br>
-            SERVICE FINANCE
-        </div>
+    <div class="right">
+        Reste :
+        <span class="bold">{{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}</span>
     </div>
+
+    @if($perception?->paid_by)
+        <div class="right">
+            Payé par : <span class="bold">{{ $perception->paid_by }}</span>
+        </div>
+    @endif
+
+    <div class="line"></div>
+
+    <div class="center footer">
+        COLLÈGE ST FRANÇOIS XAVIER<br>
+        SERVICE FINANCE
+    </div>
+
 </div>
 
 <script>
-    window.onload = function() {
-        // Impression automatique
-        setTimeout(function() {
-            window.print();
-        }, 100);
+    window.onload = function () {
+        window.print();
     };
 
-    window.onafterprint = function() {
-        // Retour à la page précédente après impression
-        setTimeout(function() {
-            window.location.href = "{{ URL::previous() }}";
-        }, 500);
+    window.onafterprint = function () {
+        window.location.href = "{{ URL::previous() }}";
     };
-
-    // Fallback: retour automatique après 5 secondes si pas d'impression
-    setTimeout(function() {
-        if (!document.hidden) {
-            window.location.href = "{{ URL::previous() }}";
-        }
-    }, 5000);
 </script>
+
 </body>
 </html>
+
 
