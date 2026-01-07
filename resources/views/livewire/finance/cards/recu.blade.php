@@ -121,17 +121,17 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;   /* centre horizontalement */
-            align-items: center;       /* centre verticalement */
+            align-items: flex-start;   /* commence en haut (meilleur pour ticket) */
             background: #fff;
             font-family: monospace;
-            font-size: 13px;           /* 🔥 police un peu plus grande */
-            line-height: 1.4;
+            font-size: 11px;
+            line-height: 1.3;
             color: #000;
         }
 
         #factPrint {
             width: 80mm;
-            padding: 4mm;
+            padding: 3mm;
         }
 
         .center { text-align: center; }
@@ -139,8 +139,8 @@
         .bold { font-weight: bold; }
 
         img {
-            max-width: 60px;
-            margin-bottom: 6px;
+            max-width: 55px;
+            margin-bottom: 4px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -148,7 +148,7 @@
 
         .line {
             border-top: 1px dashed #000;
-            margin: 8px 0;
+            margin: 6px 0;
         }
 
         table {
@@ -157,8 +157,8 @@
         }
 
         th, td {
-            padding: 3px 0;
-            font-size: 13px;
+            padding: 2px 0;
+            font-size: 11px;
         }
 
         th {
@@ -167,8 +167,8 @@
         }
 
         .footer {
-            font-size: 10px;
-            margin-top: 10px;
+            font-size: 9px;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -248,7 +248,7 @@
 
     <div class="line"></div>
 
-    <!-- PIED DE PAGE (SANS COPYRIGHT) -->
+    <!-- PIED DE PAGE -->
     <div class="center footer">
         COLLÈGE ST FRANÇOIS XAVIER<br>
         SERVICE FINANCE
@@ -268,5 +268,6 @@
 
 </body>
 </html>
+
 
 
