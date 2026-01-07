@@ -96,161 +96,321 @@
 {{--    </script>--}}
 {{--</div>--}}
 
-@php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
+
+@php use App\Helpers\Helpers; use Carbon\Carbon; @endphp
     <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Reçu</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @media print {
+            @page {
+                size: 80mm auto;
+                margin: 2mm;
+            }
+
             body {
-                margin: 0;
-                padding: 0;
+                width: 76mm;
+                margin: 0 auto;
+                font-family: 'Arial', sans-serif;
+                font-size: 9px;
+                line-height: 1.2;
+            }
+
+            * {
+                max-width: 76mm !important;
+                word-wrap: break-word;
             }
         }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background: #fff;
+        .receipt-container {
+            width: 76mm;
+            margin: 0 auto;
+            padding: 3mm;
+            font-family: 'Arial', sans-serif;
+            font-size: 9px;
+            line-height: 1.2;
+            border: 1px dashed #ccc;
         }
 
-        #factPrint {
-            width: 80mm;
-            font-family: monospace;
-            font-size: 11px;
-            line-height: 1.3;
-            color: #000;
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .center { text-align: center; }
-        .right { text-align: right; }
-        .bold { font-weight: bold; }
-
-        img {
-            max-width: 60px;
-            margin-bottom: 4px;
+        .logo {
+            width: 50px;
+            margin: 0 auto 3px;
         }
 
-        .separator {
-            border-top: 1px dashed #000;
+        .institution-name {
+            font-weight: bold;
+            font-size: 10px;
+            margin: 2px 0;
+        }
+
+        .address {
+            font-size: 8px;
+            color: #666;
+            margin: 2px 0;
+        }
+
+        .receipt-title {
+            font-weight: bold;
+            margin: 6px 0;
+            font-size: 10px;
+        }
+
+        .receipt-number {
+            background: #f0f0f0;
+            padding: 3px;
+            border-radius: 3px;
+            margin: 4px 0;
+        }
+
+        .date {
+            color: #666;
+            margin: 3px 0;
+        }
+
+        .divider {
+            border-top: 1px dashed #333;
             margin: 6px 0;
         }
 
-        table {
+        .section {
+            margin: 5px 0;
+            padding: 3px 0;
+        }
+
+        .student-info {
+            background: #f8f8f8;
+            padding: 4px;
+            border-radius: 3px;
+            margin: 5px 0;
+        }
+
+        .student-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .fee-details {
+            margin: 6px 0;
+        }
+
+        .fee-name {
+            background: #e3f2fd;
+            padding: 4px;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .table {
             width: 100%;
             border-collapse: collapse;
+            margin: 6px 0;
         }
 
-        th, td {
-            padding: 2px 0;
-            font-size: 11px;
+        .table th {
+            background: #2c3e50;
+            color: white;
+            padding: 4px;
+            text-align: center;
+            font-size: 8px;
         }
 
-        th {
-            border-bottom: 1px solid #000;
+        .table td {
+            padding: 4px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .amount-row {
+            font-weight: bold;
+        }
+
+        .total-section {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 2px solid #333;
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 2px 0;
+        }
+
+        .total-label {
+            font-weight: normal;
+        }
+
+        .total-value {
+            font-weight: bold;
+        }
+
+        .rest-due {
+            color: #e74c3c;
+        }
+
+        .footer {
+            margin-top: 10px;
+            padding-top: 6px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+        }
+
+        .verse {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 4px 0;
+            padding: 3px;
+            background: #f9f9f9;
+            border-radius: 2px;
+        }
+
+        .paid-by {
+            background: #e8f5e9;
+            padding: 3px;
+            border-radius: 3px;
+            margin: 4px 0;
+            font-size: 8px;
+        }
+
+        .signature {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #333;
+            text-align: center;
+            font-size: 8px;
+        }
+
+        .currency {
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
-
-<div id="factPrint">
-
-    <div class="center">
-        <img src="{{ url('/images/csfx/img.png') }}">
-        <div class="bold">COLLÈGE ST FRANÇOIS XAVIER</div>
-        <div>AV. Kilenge coin Wamba</div>
-        <div>Q/Bel-Air C/Kampembe</div>
-        <div>Lubumbashi – RDC</div>
+<div class="receipt-container">
+    <!-- En-tête -->
+    <div class="header">
+        <img class="logo" src="{{ url('/images/csfx/img.png') }}" alt="Logo">
+        <div class="institution-name">Collège St François Xavier</div>
+        <div class="address">AV. Kilenge coin Wamba, Q/Bel-Air<br>C/Kampembe Lubumbashi, RDC</div>
+        <div class="address">Téléphone: 000 • Email: email</div>
     </div>
 
-    <div class="separator"></div>
+    <!-- Titre du reçu -->
+    <div class="receipt-title">REÇU DE PAIEMENT</div>
+    <div class="receipt-number">N° {{ $perception?->reference }}</div>
+    <div class="date">{{ Carbon::now()->format('d/m/Y à H:i') }}</div>
 
-    <div class="center bold">
-        REÇU N° {{ $perception?->reference }}
-    </div>
+    <div class="divider"></div>
 
-    <div class="center">
-        {{ Carbon::now()->format('d/m/Y H:i') }}
-    </div>
-
-    <div class="separator"></div>
-
-    <div>
-        Élève :<br>
-        <span class="bold">{{ $inscription?->eleve->fullName }}</span>
-    </div>
-
-    <div>
-        {{ $inscription?->classe?->niveau?->label() }} –
-        {{ $inscription?->classe->parent->nom }}<br>
-        Année : {{ $annee->nom }}
-    </div>
-
-    <div class="separator"></div>
-
-    <div class="center bold">
-        {{ $perception->frais->nom }}
-    </div>
-
-    <table>
-        <tr>
-            <th>Montant dû</th>
-            <th class="right">Payé</th>
-        </tr>
-        <tr>
-            <td>{{ number_format($perception->frais_montant) }} {{ $perception->frais->devise }}</td>
-            <td class="right">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
-        </tr>
-    </table>
-
-    <div class="separator"></div>
-
-    <div class="right">
-        Cash :
-        <span class="bold">
-            {{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}
-        </span>
-    </div>
-
-    <div class="right">
-        Reste :
-        <span class="bold">
-            {{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}
-        </span>
-    </div>
-
-    @if($perception?->paid_by)
-        <div class="right">
-            Payé par :
-            <span class="bold">{{ $perception->paid_by }}</span>
+    <!-- Informations élève -->
+    <div class="section">
+        <div class="student-info">
+            <div><strong>Élève :</strong> <span class="student-name">{{ $inscription?->eleve->fullName }}</span></div>
+            <div><strong>Classe :</strong> {{ $inscription?->classe?->niveau?->label() }} {{ $inscription?->classe->parent->nom }}</div>
+            <div><strong>Année :</strong> {{ $annee->nom }}</div>
         </div>
-    @endif
-
-    <div class="separator"></div>
-
-    <div class="center" style="font-size:10px">
-        College St Francois Xavier<br>
-        Département Finance
     </div>
 
+    <!-- Détails du frais -->
+    <div class="fee-details">
+        <div class="fee-name">{{ $perception->frais->nom }}</div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>MONTANT DÛ</th>
+                <th>MONTANT PAYÉ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="amount-row">
+                <td class="currency">{{ number_format($perception->frais_montant) }} {{ $perception->frais->devise }}</td>
+                <td class="currency">{{ number_format($perception->montant) }} {{ $perception->frais->devise }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Totaux -->
+    <div class="total-section">
+        <div class="total-line">
+            <span class="total-label">Total :</span>
+            <span class="total-value currency">{{ Helpers::currencyFormat($montant) }} {{ $perception->frais->devise }}</span>
+        </div>
+        <div class="total-line">
+            <span class="total-label">Payé :</span>
+            <span class="total-value currency">{{ Helpers::currencyFormat($perception?->montant) }} {{ $perception->frais->devise }}</span>
+        </div>
+        <div class="total-line rest-due">
+            <span class="total-label">Reste à payer :</span>
+            <span class="total-value currency">{{ Helpers::currencyFormat($perception?->reste) }} {{ $perception->frais->devise }}</span>
+        </div>
+
+        @if($perception?->paid_by != null)
+            <div class="paid-by">
+                <strong>Payé par :</strong> {{ $perception?->paid_by }}
+            </div>
+        @endif
+    </div>
+
+    <!-- Verse et signature -->
+    <div class="footer">
+        <div class="verse">
+            « Si les prémices sont Saintes, la masse l'est aussi ;<br>
+            Si la racine est sainte, les branches le sont aussi »
+        </div>
+        <div class="signature">
+            Collège St François Xavier<br>
+            SERVICE FINANCE
+        </div>
+    </div>
 </div>
 
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 <script>
-    window.onload = function () {
-        window.print();
-    };
+    // Impression automatique
+    printJS({
+        printable: 'receipt-container',
+        type: 'html',
+        style: `
+                @page { size: 80mm auto; margin: 2mm; }
+                body {
+                    width: 76mm;
+                    margin: 0 auto;
+                    font-family: Arial, sans-serif;
+                    font-size: 9px;
+                    line-height: 1.2;
+                }
+                * { max-width: 76mm !important; }
+            `,
+        onPrintDialogClose: function() {
+            // Retour à la page précédente
+            setTimeout(function() {
+                window.history.back();
+            }, 500);
+        }
+    });
 
-    window.onafterprint = function () {
-        window.location.href = "{{ URL::previous() }}";
-    };
+    // Retour automatique si l'impression est annulée
+    setTimeout(function() {
+        if (!document.hidden) {
+            window.history.back();
+        }
+    }, 3000);
 </script>
-
 </body>
 </html>
-
-
 
