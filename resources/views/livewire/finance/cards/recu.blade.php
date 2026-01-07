@@ -242,7 +242,7 @@
     @if($perception?->paid_by)
         <div class="right">
             Payé par :
-            <span class="bold">{{ $perception->paid_by }}</span>
+            <span class="bold">{{ $perception->paid_by  }}</span>
         </div>
     @endif
 
