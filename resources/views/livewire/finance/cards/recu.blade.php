@@ -102,7 +102,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Reçu</title>
+    <title>Reçu de paiement</title>
 
     <style>
         @media print {
@@ -110,8 +110,10 @@
                 size: 80mm auto;
                 margin: 0;
             }
+
             body {
                 margin: 0;
+                padding: 0;
             }
         }
 
@@ -122,9 +124,11 @@
             font-size: 11px;
             line-height: 1.3;
             color: #000;
+            background: #fff;
         }
 
         #factPrint {
+            width: 80mm;
             padding: 3mm;
         }
 
@@ -135,6 +139,9 @@
         img {
             max-width: 55px;
             margin-bottom: 4px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .line {
@@ -168,8 +175,9 @@
 
 <div id="factPrint">
 
+    <!-- EN-TÊTE -->
     <div class="center">
-        <img src="{{ url('/images/csfx/img.png') }}">
+        <img src="{{ url('/images/csfx/img.png') }}" alt="Logo">
         <div class="bold">COLLÈGE ST FRANÇOIS XAVIER</div>
         <div>AV. Kilenge coin Wamba</div>
         <div>Q/Bel-Air C/Kampembe</div>
@@ -178,11 +186,13 @@
 
     <div class="line"></div>
 
+    <!-- INFO REÇU -->
     <div class="center bold">REÇU N° {{ $perception?->reference }}</div>
     <div class="center">{{ Carbon::now()->format('d/m/Y H:i') }}</div>
 
     <div class="line"></div>
 
+    <!-- ÉLÈVE -->
     <div>
         Élève :<br>
         <span class="bold">{{ $inscription?->eleve->fullName }}</span>
@@ -196,6 +206,7 @@
 
     <div class="line"></div>
 
+    <!-- FRAIS -->
     <div class="center bold">{{ $perception->frais->nom }}</div>
 
     <table>
@@ -211,24 +222,31 @@
 
     <div class="line"></div>
 
+    <!-- TOTAUX -->
     <div class="right">
         Cash :
-        <span class="bold">{{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}</span>
+        <span class="bold">
+            {{ Helpers::currencyFormat($perception->montant) }} {{ $perception->frais->devise }}
+        </span>
     </div>
 
     <div class="right">
         Reste :
-        <span class="bold">{{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}</span>
+        <span class="bold">
+            {{ Helpers::currencyFormat($perception->reste) }} {{ $perception->frais->devise }}
+        </span>
     </div>
 
     @if($perception?->paid_by)
         <div class="right">
-            Payé par : <span class="bold">{{ $perception->paid_by }}</span>
+            Payé par :
+            <span class="bold">{{ $perception->paid_by }}</span>
         </div>
     @endif
 
     <div class="line"></div>
 
+    <!-- PIED DE PAGE (SANS COPYRIGHT) -->
     <div class="center footer">
         COLLÈGE ST FRANÇOIS XAVIER<br>
         SERVICE FINANCE
