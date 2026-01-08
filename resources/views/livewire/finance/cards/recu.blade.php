@@ -109,20 +109,16 @@
 
     <style>
         /* ===================== */
-        /* IMPRESSION – 100% AUTO */
+        /* IMPRESSION */
         /* ===================== */
         @media print {
             @page {
-                margin: 0; /* taille native imprimante */
+                margin: 0; /* taille par défaut imprimante */
             }
 
             body {
                 margin: 0;
                 padding: 0;
-            }
-
-            #factPrint {
-                margin: 0 auto; /* centré impression */
             }
         }
 
@@ -135,15 +131,14 @@
             font-size: 13px;
             line-height: 1.4;
             color: #000;
-            padding: 5mm 0;
+            padding: 0;
         }
 
         /* ===================== */
-        /* REÇU (AUCUNE LIMITE) */
+        /* REÇU – 80MM FIXE */
         /* ===================== */
         #factPrint {
-            width: auto;       /* 🔥 taille naturelle */
-            margin: 0 auto;    /* centré écran */
+            width: 80mm;      /* 🔥 largeur ticket 80mm */
             padding: 3mm;
             background: #fff;
         }
@@ -280,6 +275,7 @@
 
 </body>
 </html>
+
 
 
 
