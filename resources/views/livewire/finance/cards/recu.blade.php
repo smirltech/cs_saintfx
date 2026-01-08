@@ -109,11 +109,12 @@
 
     <style>
         /* ===================== */
-        /* IMPRESSION */
+        /* IMPRESSION – 80x210mm */
         /* ===================== */
         @media print {
             @page {
-                margin: 0; /* taille par défaut imprimante */
+                size: 80mm 210mm; /* largeur x hauteur */
+                margin: 0; /* aucune marge */
             }
 
             body {
@@ -135,10 +136,11 @@
         }
 
         /* ===================== */
-        /* REÇU – 80MM FIXE */
+        /* REÇU – FIXE 80x210mm */
         /* ===================== */
         #factPrint {
-            width: 80mm;      /* 🔥 largeur ticket 80mm */
+            width: 80mm;        /* largeur fixe */
+            height: 210mm;      /* hauteur fixe */
             padding: 3mm;
             background: #fff;
         }
@@ -275,6 +277,7 @@
 
 </body>
 </html>
+
 
 
 
