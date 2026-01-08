@@ -164,10 +164,7 @@
             <strong>{{$perception?->paid_by}}</strong></div>
     @endif
     <br>
-    <div style="text-align:center; margin-bottom: 50px" class="text-center">
-        <span class="w3-center justify-content-center w3-small">Si les prémices sont Saintes, la masse l’est aussi;
-            Si la racine est sainte, les branches le sont aussi</span>
-    </div>
+
 
     <div class="w3-small text-center">CENK - FINANCE</div>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
