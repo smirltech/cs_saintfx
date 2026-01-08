@@ -130,10 +130,12 @@
         }
 
         #factPrint {
-            width: 7cm;        /* largeur fixe 7 cm */
+            width: 100%;          /* s’adapte automatiquement */
+            max-width: 80mm;      /* limite raisonnable pour ticket */
             padding: 3mm;
             background: #fff;
         }
+
 
 
         .center { text-align: center; }
