@@ -99,10 +99,10 @@
 @php use App\Helpers\Helpers;use Carbon\Carbon; @endphp
 <div id="factPrint" class="text-center" style="text-align:center">
     <div style="text-align:center" class="text-center">
-        <img width="80px" src="{{url('/images/logo.png')}}" alt="cenk logo">
+        <img width="80px" src="{{url('/images/csfx/img.png')}}" alt="csfx logo">
     </div>
-    <strong>COLLEGE EXCELLENT NYEMBWE KAZAMBI</strong>
-    <div class="text-center"  style="margin-bottom: 10px">Route Kamasaka, Kilobelobe, Lubumbashi, RDC</div>
+    <strong>COLLÈGE ST FRANÇOIS XAVIER</strong>
+    <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe, Lubumbashi – RDC</div>
     {{--<div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
         <span  class="">Email:email</span>
     </div>--}}
@@ -164,10 +164,6 @@
             <strong>{{$perception?->paid_by}}</strong></div>
     @endif
     <br>
-    <div style="text-align:center; margin-bottom: 50px" class="text-center">
-        <span class="w3-center justify-content-center w3-small">Si les prémices sont Saintes, la masse l’est aussi;
-            Si la racine est sainte, les branches le sont aussi</span>
-    </div>
 
     <div class="w3-small text-center">CENK - FINANCE</div>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
