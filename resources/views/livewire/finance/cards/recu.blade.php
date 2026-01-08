@@ -109,21 +109,17 @@
 
     <style>
         /* ===================== */
-        /* IMPRESSION – LARGEUR FIXE 80mm, HAUTEUR AUTO */
+        /* IMPRESSION – 80x210mm */
         /* ===================== */
         @media print {
             @page {
-                size: 80mm auto; /* largeur fixe, hauteur auto selon contenu */
-                margin: 0;       /* aucune marge */
+                size: 80mm 210mm; /* largeur x hauteur */
+                margin: 0; /* aucune marge */
             }
 
             body {
                 margin: 0;
                 padding: 0;
-            }
-
-            #factPrint {
-                margin: 0; /* aligné en haut */
             }
         }
 
@@ -140,10 +136,11 @@
         }
 
         /* ===================== */
-        /* REÇU – LARGEUR 80mm */
+        /* REÇU – FIXE 80x210mm */
         /* ===================== */
         #factPrint {
-            width: 80mm;       /* largeur fixe */
+            width: 80mm;        /* largeur fixe */
+            height: 210mm;      /* hauteur fixe */
             padding: 3mm;
             background: #fff;
         }
