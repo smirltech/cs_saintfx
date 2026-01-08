@@ -140,12 +140,12 @@
         /* ===================== */
         #factPrint {
             width: 80mm;        /* largeur fixe */
-            height: 180mm;      /* hauteur fixe */
+            height: 150mm;      /* hauteur fixe */
             padding: 3mm;
             background: #fff;
         }
 
-        /*.center { text-align: center; }*/
+        .center { text-align: center; }
         .right  { text-align: right; }
         .bold   { font-weight: bold; }
 
