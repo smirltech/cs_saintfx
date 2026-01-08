@@ -118,23 +118,34 @@
         }
 
         body {
-            width: 100%;
-            display: flex;
-            justify-content: center;   /* centre horizontalement */
             background: #fff;
             font-family: monospace;
-            font-size: 13px;           /* un peu plus grand */
+            font-size: 13px;
             line-height: 1.4;
             color: #000;
-            padding: 5mm 0;            /* petit padding haut/bas */
+            padding: 5mm 0;
         }
 
         #factPrint {
-            width: 100%;          /* s’adapte automatiquement */
-            max-width: 80mm;      /* limite raisonnable pour ticket */
+            width: 100%;          /* s’adapte */
+            max-width: 80mm;      /* ticket */
             padding: 3mm;
             background: #fff;
+            margin: 0 auto;       /* 🔥 centre horizontalement */
         }
+
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            #factPrint {
+                margin: 0 auto;
+            }
+        }
+
+
 
 
 
