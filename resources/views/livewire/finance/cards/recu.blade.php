@@ -101,7 +101,7 @@
     <div style="text-align:center" class="text-center">
         <img width="80px" src="{{url('/images/logo.png')}}" alt="cenk logo">
     </div>
-    <strong>COLLEGE EXCELLENT NYEMBWE KAZAMBI</strong>
+    <strong>COLLÈGE ST FRANÇOIS XAVIER</strong>
     <div class="text-center"  style="margin-bottom: 10px">Route Kamasaka, Kilobelobe, Lubumbashi, RDC</div>
     {{--<div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
         <span  class="">Email:email</span>
