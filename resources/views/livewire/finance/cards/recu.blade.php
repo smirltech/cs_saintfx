@@ -97,7 +97,11 @@
 {{--</div>--}}
 
 
-@php use App\Helpers\Helpers; use Carbon\Carbon; @endphp
+@php
+    use App\Helpers\Helpers;
+    use Carbon\Carbon;
+@endphp
+
     <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -105,18 +109,27 @@
     <title>Reçu de paiement</title>
 
     <style>
+        /* ===================== */
+        /* IMPRESSION (AUTO) */
+        /* ===================== */
         @media print {
             @page {
-                size: auto; /* hauteur auto selon contenu */
-                margin: 0;
+                margin: 0; /* taille native imprimante */
             }
 
             body {
                 margin: 0;
                 padding: 0;
             }
+
+            #factPrint {
+                margin: 0 auto; /* centré impression */
+            }
         }
 
+        /* ===================== */
+        /* GLOBAL */
+        /* ===================== */
         body {
             background: #fff;
             font-family: monospace;
@@ -126,39 +139,25 @@
             padding: 5mm 0;
         }
 
+        /* ===================== */
+        /* REÇU */
+        /* ===================== */
         #factPrint {
-            width: 100%;          /* s’adapte */
-            max-width: 80mm;      /* ticket */
+            width: 100%;
+            max-width: 80mm; /* limite visuelle seulement */
+            margin: 0 auto;  /* centré écran */
             padding: 3mm;
             background: #fff;
-            margin: 0 auto;       /* 🔥 centre horizontalement */
         }
-
-        @media print {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-
-            #factPrint {
-                margin: 0 auto;
-            }
-        }
-
-
-
-
 
         .center { text-align: center; }
-        .right { text-align: right; }
-        .bold { font-weight: bold; }
+        .right  { text-align: right; }
+        .bold   { font-weight: bold; }
 
         img {
             max-width: 60px;
-            margin-bottom: 6px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 6px;
         }
 
         .line {
@@ -283,6 +282,7 @@
 
 </body>
 </html>
+
 
 
 
