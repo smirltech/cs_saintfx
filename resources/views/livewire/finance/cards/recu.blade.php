@@ -96,7 +96,6 @@
 {{--    </script>--}}
 {{--</div>--}}
 
-
 @php
     use App\Helpers\Helpers;
     use Carbon\Carbon;
@@ -110,7 +109,7 @@
 
     <style>
         /* ===================== */
-        /* IMPRESSION (AUTO) */
+        /* IMPRESSION – 100% AUTO */
         /* ===================== */
         @media print {
             @page {
@@ -140,12 +139,11 @@
         }
 
         /* ===================== */
-        /* REÇU */
+        /* REÇU (AUCUNE LIMITE) */
         /* ===================== */
         #factPrint {
-            width: 100%;
-            max-width: 80mm; /* limite visuelle seulement */
-            margin: 0 auto;  /* centré écran */
+            width: auto;       /* 🔥 taille naturelle */
+            margin: 0 auto;    /* centré écran */
             padding: 3mm;
             background: #fff;
         }
