@@ -140,7 +140,7 @@
         /* ===================== */
         #factPrint {
             width: 80mm;        /* largeur fixe */
-            height: 210mm;      /* hauteur fixe */
+            height: 180mm;      /* hauteur fixe */
             padding: 3mm;
             background: #fff;
         }
