@@ -145,7 +145,7 @@
             background: #fff;
         }
 
-        .center { text-align: center; }
+        /*.center { text-align: center; }*/
         .right  { text-align: right; }
         .bold   { font-weight: bold; }
 
