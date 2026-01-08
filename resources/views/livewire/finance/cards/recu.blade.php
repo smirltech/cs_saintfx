@@ -1,3 +1,4 @@
+
 @php
     use App\Helpers\Helpers;
     use Carbon\Carbon;
@@ -75,16 +76,12 @@
 
 <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 <script>
-    // ✅ attendre que le DOM soit complètement chargé
-    document.addEventListener('DOMContentLoaded', function() {
-        printJS({
-            printable: 'factPrint',
-            type: 'html',
-            targetStyles: ['*'],
-            onPrintDialogClose: function() {
-                // retour à la page précédente après impression
-                window.location.href = "{{ URL::previous() }}";
-            }
-        });
+    printJS({
+        printable: 'factPrint',
+        type: 'html',
+        targetStyles: ['*'],
+        onPrintDialogClose: function() {
+            location.replace("{{ URL::previous() }}");
+        }
     });
 </script>
