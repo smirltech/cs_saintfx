@@ -80,8 +80,17 @@
         printable: 'factPrint',
         type: 'html',
         targetStyles: ['*'],
-        onPrintDialogClose: function() {
-            location.replace("{{ URL::previous() }}");
-        }
+        // maxWidth: 300,
+        style: "text-align:center",
+        onPrintDialogClose: redirectBack
     });
+
+
+    window.onafterprint = function () {
+        redirectBack();
+    }
+
+    function redirectBack() {
+        location.replace("{{URL::previous()}}");
+    }
 </script>
