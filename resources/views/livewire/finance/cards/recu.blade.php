@@ -130,11 +130,11 @@
         }
 
         #factPrint {
-            width: 80mm;               /* largeur fixe */
+            width: 7cm;        /* largeur fixe 7 cm */
             padding: 3mm;
             background: #fff;
-            /* hauteur automatique selon contenu */
         }
+
 
         .center { text-align: center; }
         .right { text-align: right; }

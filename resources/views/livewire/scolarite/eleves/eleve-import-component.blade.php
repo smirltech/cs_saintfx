@@ -33,7 +33,6 @@
                                     wire:model="file"/>
                 <div class="mt-2">
                     Veuillez télécharger le modèle <a
-                        href="{{asset("models/MATERNELLE-Table 1.xlsx")}}">ici</a>
                 </div>
             </div>
         </div>
