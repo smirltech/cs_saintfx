@@ -5,9 +5,9 @@
     </div>
     <strong>COLLÈGE ST FRANÇOIS XAVIER</strong>
     <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe, Lubumbashi – RDC</div>
-    {{--<div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
+    <div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
         <span  class="">Email:email</span>
-    </div>--}}
+    </div>
 
     <div style="text-align:center" class="text-center">REÇU N°{{$perception?->reference}}</div>
     <div style="text-align:center" class="text-center">
@@ -53,8 +53,8 @@
         </table>
     </div>
     <hr>
-    {{--<div class="text-right">Total :
-        <strong>{{Helpers::currencyFormat($montant)}}</strong></div>--}}
+    <div class="text-right">Total :
+        <strong>{{Helpers::currencyFormat($montant)}}</strong></div>
     <div style="text-align:right" class="text-right">Cash :
         <strong>{{Helpers::currencyFormat($perception?->montant)}} {{ $perception->frais->devise }}</strong></div>
     <div style="text-align:right" class="text-right">Reste :
