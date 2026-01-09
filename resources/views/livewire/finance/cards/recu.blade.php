@@ -4,7 +4,7 @@
         <img width="80px" src="{{url('/images/logo.png')}}" alt="cenk logo">
     </div>
     <strong>COLLÈGE ST FRANÇOIS XAVIER</strong>
-    <div class="text-center"  style="margin-bottom: 10px">Route Kamasaka, Kilobelobe, Lubumbashi, RDC</div>
+    <div class="text-center"  style="margin-bottom: 10px">AV. Kilenge coin Wamba, Q/Bel-Air C/Kampembe, Lubumbashi – RDC</div>
     {{--<div  class="text-center" style="margin-bottom: 10px"><span>Telephone:000</span>
         <span  class="">Email:email</span>
     </div>--}}
@@ -92,4 +92,3 @@
 
     </script>
 </div>
-
