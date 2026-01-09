@@ -1,8 +1,10 @@
 @php use App\Enums\FraisType; @endphp
 @php use App\Enums\MinervalMonth; @endphp
 @php use App\Enums\Devise; @endphp
-<x-modals::form title="Perception de {{$inscription->eleve->nom}}">
-   {{-- <x-form::validation-errors/>--}}
+{{--<x-modals::form title="Perception de {{$inscription->eleve->nom}}">--}}
+<x-modals::form title="Perception de {{ $inscription?->eleve?->nom ?? 'Élève' }}">
+
+    {{-- <x-form::validation-errors/>--}}
     <div class="row mb-3">
         <div class="col-md-12 mb-3">
             <x-form::select
