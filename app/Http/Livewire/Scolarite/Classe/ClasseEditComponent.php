@@ -102,7 +102,7 @@ class ClasseEditComponent extends BaseComponent
 //        $this->classe->code = "{$this->classe->niveau?->value}{$optionSection->code}{$this->type ?? ''}";
         $this->classe->code = $this->classe->niveau?->value
             . ($optionSection?->code ?? '')
-            . '-'. ($this->type ?? '');
+            . ($this->type ?? '');
     }
 
     public function updatedOptionId(): void
