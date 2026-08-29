@@ -1,1 +1,12 @@
-
+apiVersion: miabi.io/v1
+kind: Pipeline
+metadata: { name: masomosoft }
+on:
+  push: { branches: [master] }
+  #manual: true
+steps:
+  - name: build
+    uses: build
+    dockerfile: Dockerfile
+  - name: deploy
+    uses: deploy
