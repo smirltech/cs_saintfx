@@ -1,0 +1,23 @@
+services:
+  masomo-soft:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: masomo-soft
+    restart: unless-stopped
+
+    volumes:
+      - ./:/var/www/html
+      - ../storage/library:/var/www/html/storage/app
+
+    ports:
+      - "9080:80"
+
+    networks:
+      - smirlnet
+
+networks:
+  smirlnet:
+    name: smirlnet
+    external: true
