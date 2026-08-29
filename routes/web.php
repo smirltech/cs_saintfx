@@ -64,6 +64,8 @@ Route::get('/scolarite/eleves/passer-classe-superieure', PassageClasseSuperieure
 Route::get('/scolarite/eleves/passer-classe-superieure/{id}', PassageClasseSuperieureComponent::class)
     ->name('eleves.passer-classe-superieure');
 
+Route::view('test-miabi','test.miabi');
+
 
 //Scolarite
 require __DIR__ . '/modules/scolarite.php';

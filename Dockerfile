@@ -22,6 +22,10 @@ RUN mkdir -p \
     && chown -R www-data:www-data /var/www/html \
     bootstrap/cache
 
+RUN chown -R www-data:www-data /var/www/html/storage
+RUN chown -R www-data:www-data /var/www/html/bootstrap/cache
+RUN chmod 777 /var/www/html/storage
+
 
 RUN composer dump-autoload --optimize --no-interaction
 
