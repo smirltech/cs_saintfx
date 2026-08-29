@@ -3,13 +3,26 @@ FROM jkaninda/nginx-php-fpm:8.4
 WORKDIR /var/www/html
 
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction
+
+RUN composer install \
+    --no-scripts \
+    --no-autoloader \
+    --prefer-dist \
+    --no-interaction
 
 COPY . .
 
-RUN composer dump-autoload --optimize --no-dev --no-interaction \
-    && mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+ 
+RUN mkdir -p \
+        storage/framework/cache/data \
+        storage/framework/sessions \
+        storage/framework/views \
+        storage/logs \
+        bootstrap/cache \
     && chown -R www-data:www-data /var/www/html
+
+ 
+RUN composer dump-autoload --optimize --no-interaction
 
 ENV APP_ENV=production \
     APP_DEBUG=false \
