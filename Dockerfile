@@ -19,7 +19,8 @@ RUN mkdir -p \
         storage/framework/views \
         storage/logs \
         bootstrap/cache \
-    && chown -R www-data:www-data /var/www/html
+    && chown -R www-data:www-data /var/www/html \
+    bootstrap/cache
 
  
 RUN composer dump-autoload --optimize --no-interaction
