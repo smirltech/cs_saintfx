@@ -13,12 +13,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 use LaravelIdea\Helper\App\Models\_IH_User_C;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, HasAvatar, HasUlids;
+    use HasFactory, Notifiable, HasRoles, HasAvatar, HasUlids, HasApiTokens;
 
     protected $guarded = [];
 
@@ -29,6 +30,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+       // 'password'=>'password'
     ];
 
     public static function getStaff(): Collection|array|_IH_User_C
