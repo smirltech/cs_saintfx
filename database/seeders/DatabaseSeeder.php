@@ -28,24 +28,24 @@ class DatabaseSeeder extends Seeder
             ]);
 
             User::factory()->create([
-                'email' => 'admin@cs-saint-fx.com',
+                'email' => 'admin@masomosoft.com',
                 'name' => 'Admin',
             ])->assignRole(UserRole::admin->value);
 
             // create promoteur
             User::factory()->create([
-                'email' => 'promoteur@cs-saint-fx.com',
+                'email' => 'promoteur@masomosoft.com',
                 'name' => 'Promoteur',
             ])->assignRole(UserRole::promoteur->value);
 
             User::factory()->create([
-                'email' => 'coordonnateur@cs-saint-fx.com',
+                'email' => 'coordonnateur@masomosoft.com',
                 'name' => 'Coordonnateur',
             ])->assignRole(UserRole::coordonnateur->value);
 
             // create admin
             User::factory()->create([
-                'email' => 'financier@cs-saint-fx.com',
+                'email' => 'financier@masomosoft.com',
                 'name' => 'Financier',
             ])->assignRole(UserRole::financier->value);
 
@@ -60,17 +60,17 @@ class DatabaseSeeder extends Seeder
                 ]);
                 // create admin
                 User::factory()->create([
-                    'email' => 'eleve@cs-saint-fx.com',
+                    'email' => 'eleve@masomosoft.com',
                     'name' => 'Eleve',
                 ])->assignRole(UserRole::eleve->value);
 
                 User::factory()->create([
-                    'email' => 'parent@cs-saint-fx.com',
+                    'email' => 'parent@masomosoft.com',
                     'name' => 'Parent',
                 ])->assignRole(UserRole::parent->value);
 
                 User::factory()->create([
-                    'email' => 'enseingant@cs-saint-fx.com',
+                    'email' => 'enseingant@masomosoft.com',
                     'name' => 'Enseignant',
                 ])->assignRole(UserRole::enseignant->value);
 
