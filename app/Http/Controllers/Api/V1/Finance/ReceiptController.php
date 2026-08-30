@@ -31,5 +31,6 @@ class ReceiptController extends Controller
                 'last_page' => $receipts->lastPage(),
             ],
         ]);
+
     }
 }
