@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\SectionController;
 use App\Http\Controllers\Api\V1\Finance\ReceiptController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ContextController;
+use App\Http\Controllers\Api\V1\DashboardController;
 use App\Http\Resources\AnneeResource;
 use App\Models\Annee;
 use Illuminate\Support\Facades\Route;
@@ -22,14 +23,13 @@ Route::prefix('v1')->group(function () {
         Route::get('/auth/me', [AuthController::class, 'me']);
 
         Route::get('/context', [ContextController::class, 'index']);
+
+        Route::get('/dashboard', [DashboardController::class, 'index']);
     });
 
     Route::prefix('finance')->group(function () {
 
-        Route::get(
-            'receipts',
-            [ReceiptController::class, 'index']
-        )->name('api.v1.finance.receipts.index');
+        Route::get( 'receipts', [ReceiptController::class, 'index'])->name('api.v1.finance.receipts.index');
 
     });
 
